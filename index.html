@@ -1,7 +1,109 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="styles.css" />
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    </head>
+    
     <body>
-        <h1>This is live!</h1>
-        <p>My first paragraph.</p>
+        <div id="section-clothes-shop">
+            <h1 id="text-clothes-shop">Clothes Shop!</h1>
+            <table>
+                <!-- Cloth item in the head -->
+                <tr>
+                    <td><img id="btn-next-head" class="btn-arrow btn-arrow-left" src="./images/arrow-left.png" onclick="setPreviousItemHead();"/></td>
+                    <td><img id="item-head" class="img-item" src="images/head-0.png" /></td>
+                    <td><img id="btn-previous-head" class="btn-arrow btn-arrow-right" src="./images/arrow-right.png" onclick="setNextItemHead();"/></td>
+                </tr>
+                <!-- Cloth item in the body -->
+                <tr>
+                    <td><img id="btn-next-body" class="btn-arrow btn-arrow-left" src="./images/arrow-left.png" onclick="setPreviousItemBody();"/></td>
+                    <td><img id="item-body" class="img-item" src="images/body-0.png" /></td>
+                    <td><img id="btn-previous-head" class="btn-arrow btn-arrow-right" src="./images/arrow-right.png" onclick="setNextItemBody();"/></td>
+                </tr>
+                <!-- Cloth item in the legs -->
+                <tr>
+                    <td><img id="btn-next-legs" class="btn-arrow btn-arrow-left" src="./images/arrow-left.png" onclick="setPreviousItemLegs();"/></td>
+                    <td><img id="item-legs" class="img-item" src="images/legs-0.png" /></td>
+                    <td><img id="btn-previous-legs" class="btn-arrow btn-arrow-right" src="./images/arrow-right.png" onclick="setNextItemLegs();"/></td>
+                </tr>                
+            </table>
+            <button id="btn-randomize" onclick="setRandomItems();">Randomize</button>
+        </div>
+        
+        <script>
+        const itemsCountHead = 4;
+        var currentItemHead = 0;
+        
+        function setNextItemHead() {
+            if (currentItemHead < itemsCountHead - 1) {
+                currentItemHead++;
+            } else {
+                currentItemHead = 0;
+            }
+            document.getElementById("item-head").src = "./images/head-" + currentItemHead + ".png";
+        }
+            
+        function setPreviousItemHead() {
+            if (currentItemHead > 0) {
+                currentItemHead--;
+            } else {
+                currentItemHead = itemsCountHead - 1;
+            }
+            document.getElementById("item-head").src = "./images/head-" + currentItemHead + ".png";
+        }
+            
+        const itemsCountBody = 9;        
+        var currentItemBody = 0;        
+        
+        function setNextItemBody() {
+            if (currentItemBody < itemsCountBody - 1) {
+                currentItemBody++;
+            } else {
+                currentItemBody = 0;
+            }
+            document.getElementById("item-body").src = "./images/body-" + currentItemBody + ".png";
+        }
+            
+        function setPreviousItemBody() {
+            if (currentItemBody > 0) {
+                currentItemBody--;
+            } else {
+                currentItemBody = itemsCountBody - 1;
+            }
+            document.getElementById("item-body").src = "./images/body-" + currentItemBody + ".png";
+        }
+            
+        const itemsCountLegs = 10;        
+        var currentItemLegs = 0;        
+        
+        function setNextItemLegs() {
+            if (currentItemLegs < itemsCountLegs - 1) {
+                currentItemLegs++;
+            } else {
+                currentItemLegs = 0;
+            }
+            document.getElementById("item-legs").src = "./images/legs-" + currentItemLegs + ".png";
+        }
+            
+        function setPreviousItemLegs() {
+            if (currentItemLegs > 0) {
+                currentItemLegs--;
+            } else {
+                currentItemLegs = itemsCountLegs - 1;
+            }
+            document.getElementById("item-legs").src = "./images/legs-" + currentItemLegs + ".png";
+        }
+            
+        function setRandomItems() {
+            currentItemHead = Math.floor(Math.random() * itemsCountHead);
+            currentItemBody = Math.floor(Math.random() * itemsCountBody);
+            currentItemLegs = Math.floor(Math.random() * itemsCountLegs);
+            
+            document.getElementById("item-head").src = "./images/head-" + currentItemHead + ".png";
+            document.getElementById("item-body").src = "./images/body-" + currentItemBody + ".png";
+            document.getElementById("item-legs").src = "./images/legs-" + currentItemLegs + ".png";            
+        }
+        </script>
     </body>
 </html>
