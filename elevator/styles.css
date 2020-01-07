@@ -1,0 +1,46 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background: black;
+}
+
+table {
+    width: 75%;
+    text-align: center;
+    background-color: aquamarine;
+    border-radius: 1em;
+    border-spacing: .5em;
+    border: 0.25em solid #ebba14;
+    margin: 2em;
+    padding: 1em;    
+    margin: auto;
+}
+
+.btn-elevator {
+    width: 25%;
+    vertical-align: middle;
+    padding: 0.5em;
+}
+
+.img-elevator {
+    width: 50%;
+    margin: auto;
+    display: block;
+}
+
+p {
+    display: inline-block;
+    font-size: 2em;
+    line-height: normal;
+    vertical-align: middle;
+}
+
+button {
+    background: url('/arrow-up.png') no-repeat;    
+}
+
+#floor-number {
+    
+}

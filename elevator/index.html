@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css"/>
+    </head>
+    <body>
+        <table>
+            <tr>
+                <th><p>Floor</p></th>
+                <th>
+                    <div id="controls">
+                        <img class="btn-elevator" src="arrow-up.png" onclick="floorUp();"/>
+                        <p id="floor-number">0</p>
+                        <img class="btn-elevator" src="arrow-down.png" onclick="floorDown();" />
+                    </div>
+                </th>
+                <th><p>People</p></th>
+            </tr>
+            <tr>
+                <td><p>2</p></td>
+                <td><img id="floor-2" class="img-elevator" src="elevator-door.png"/></td>
+                <td><p id="people-floor-2">0</p></td>
+            </tr>
+            <tr>
+                <td><p>1</p></td>
+                <td><img id="floor-1" class="img-elevator" src="elevator-door.png"/></td>
+                <td><p id="people-floor-1">0</p></td>
+            </tr>
+            <tr>
+                <td><p>0</p></td>
+                <td><img id="floor-0" class="img-elevator" src="elevator.png"/></td>
+                <td><p id="people-floor-0">0</p></td>
+            </tr>
+            <tr>
+                <td><p>-1</p></td>
+                <td><img id="floor--1" class="img-elevator" src="elevator-door.png"/></td>
+                <td><p id="people-floor--1">0</p></td>
+            </tr>
+        </table>
+        
+        <script>
+        const minFloor = -1;
+        const maxFloor = 2;
+        
+        var floor = 0;
+        var people = 0;
+        
+        updatePeople();
+            
+        function updatePeople() {
+            document.getElementById("people-floor-1").innerHTML = Math.floor(Math.random() * 5) + 1;
+        document.getElementById("people-floor--1").innerHTML = Math.floor(Math.random() * 5) + 1;
+        }
+        
+        function floorUp() {            
+            document.getElementById("floor-" + floor).src = "elevator-door.png";   
+            if (floor < maxFloor) {
+                floor++;
+            }            
+            document.getElementById("floor-" + floor).src = "elevator.png";            
+            document.getElementById("floor-number").innerHTML = floor;
+            
+            tryGetPeople();
+            tryDropPeople();
+        }
+            
+        function floorDown() {
+            document.getElementById("floor-" + floor).src = "elevator-door.png";
+            if (floor > minFloor) {
+                floor--;
+            }            
+            document.getElementById("floor-" + floor).src = "elevator.png";
+            document.getElementById("floor-number").innerHTML = floor;
+            
+            tryGetPeople();
+            tryDropPeople();
+        }
+        
+        function tryGetPeople() {
+            var waiting = parseInt(document.getElementById("people-floor-" + floor).innerHTML);
+            if (waiting > 0) {
+                people += waiting;
+                document.getElementById("people-floor-" + floor).innerHTML = 0;
+            }
+        }
+            
+        function tryDropPeople() {
+            if (floor == maxFloor) {
+                document.getElementById("people-floor-" + floor).innerHTML = people;
+                people = 0;
+                updatePeople();
+            }
+        }
+        </script>        
+    </body>
+</html>
